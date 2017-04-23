@@ -2468,6 +2468,12 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
+human-readable-ids@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/human-readable-ids/-/human-readable-ids-1.0.1.tgz#0f4bb1d90c67fef810ae0b054cf92ae09e5e2d80"
+  dependencies:
+    knuth-shuffle "^1.0.0"
+
 iconv-lite@0.4.13, iconv-lite@~0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
@@ -3109,6 +3115,10 @@ klaw@^1.0.0:
   resolved "https://registry.yarnpkg.com/klaw/-/klaw-1.3.1.tgz#4088433b46b3b1ba259d78785d8e96f73ba02439"
   optionalDependencies:
     graceful-fs "^4.1.9"
+
+knuth-shuffle@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/knuth-shuffle/-/knuth-shuffle-1.0.1.tgz#454940ae816c14e1af6e6f09d8828818f95b5191"
 
 lazy-cache@^1.0.3:
   version "1.0.4"

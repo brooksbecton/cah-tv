@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
-import './CreateTable.css'; 
+import React from 'react';
+import { connect } from 'react-redux';
+import { hri } from 'human-readable-ids';
+import { ADD_TABLE } from './actions/table';
+import './CreateTable.css';
 
-class CreateTable extends Component {
 
-    constructor(){
-        super();
+const mapStateToProps = (state) => { return { tables: state.tables } }
 
-        this.state = {
-            foo: 'bar'
-        }
-    }
 
-    createTable(){
-        console.log('createTable');
-    }
+let CreateTable = ({ dispatch, tables }) => {
 
-    render() {
-        return (
-            <div className="CreateTable">
-                <h1>Create Table</h1>
-                <button onClick={this.createTable}>Create Table</button>
-            </div>
-        );
-    }
-} export default CreateTable;
+    const createId = () => hri.random()
+    const createTable = () => {
+        const id = createId();
+        dispatch(ADD_TABLE(id))
+    };
+
+    return (
+        <div className="CreateTable">
+            <h1>Create Table</h1>
+            <button onClick={createTable}>Create Table</button>
+        </div>
+    )
+}
+
+CreateTable = connect(mapStateToProps)(CreateTable);
+
+export default CreateTable;
