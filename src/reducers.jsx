@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import table from './CreateTable/CreateTable';
+import table from './CreateTable/reducers/table';
 
 const reducers = () => combineReducers({
     table
