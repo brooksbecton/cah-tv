@@ -4,6 +4,8 @@
     "private": true,
     "dependencies": {
         "babel-preset-es2015": "^6.24.1",
+        "body-parser": "^1.17.1",
+        "express": "^4.15.2",
         "human-readable-ids": "^1.0.1",
         "react": "^15.5.4",
         "react-dom": "^15.5.4",
@@ -17,7 +19,7 @@
         "react-scripts": "0.9.5"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "start": "node src/server.js",
         "build": "react-scripts build",
         "test": "jest",
         "test:watch": "yarn test -- --watch",
