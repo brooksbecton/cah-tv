@@ -1,7 +1,6 @@
 var firebase = require('firebase');
 require('dotenv').config();
 
-console.log(process.env.FIREBASE_API_KEY)
 
 // Initialize Firebase
 var config = {

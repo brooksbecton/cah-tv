@@ -8,24 +8,16 @@ function _generateId() {
 module.exports = {
     createNewTable: function () {
         var id = _generateId();
-        firebase.database().ref('tables/' + id).set({
+        return firebase.database().ref('tables/' + id).set({
             active: false
         });
-        console.log('table made!');
     },
 
     getTable: function (id) {
-        console.log('tables/' + id);
-        firebase.database().ref('tables/' + id).once('value').then(function (snapshot) {
-            console.log(snapshot.val());
-            return snapshot.val();
-        });
+        return firebase.database().ref('tables/' + id).once('value');
     },
     getTables: function () {
-        firebase.database().ref('tables/').once('value').then(function (snapshot) {
-            console.log(snapshot.val());
-            return snapshot.val();
-        });
+        return firebase.database().ref('tables/').once('value');
     }
 }
 

@@ -3,21 +3,22 @@ var router = express.Router();
 
 var table = require('./container');
 
-router.get('/', function (req, res) {
-    res.json(table.getTables());
+router.get('/', (req, res) => {
+    table.getTables()
+        .then(function (data) {
+            res.json(data.val());
+        })
+
 });
-router.get('', function (req, res) {
-    res.json(table.getTables());
-});
-router.get('/:id', function (req, res) {
-    var id = req.params.id;
-    console.log('Table with id: ' + id);
-    res.json(table.getTable(id));
-});
-router.post('', function (req, res) {
-    console.log('creating table...')
+router.post('/', (req, res) => {
     table.createNewTable();
-    res.json({ message: 'POST TABLE SUCCESSFUL' });
+    res.send('Success');
+});
+router.get('/:id', (req, res) => {
+    var id = req.params.id;
+    table.getTable(id).then((data) => {
+        res.json(data.val());
+    })
 });
 
 module.exports = router
