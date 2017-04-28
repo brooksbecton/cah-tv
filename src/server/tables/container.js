@@ -11,6 +11,9 @@ module.exports = {
             active: false
         });
     },
+    deleteTables: function () {
+        return firebase.database().ref('tables/').remove();
+    },
     deleteTable: function (id) {
         return firebase.database().ref('tables/' + id).remove();
     },

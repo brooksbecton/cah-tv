@@ -5,7 +5,7 @@ var table = require('./container');
 
 router.get('/', (req, res) => {
     table.getTables()
-        .then(function(data) {
+        .then(function (data) {
             res.status(200).json(data.val());
         })
 });
@@ -25,6 +25,12 @@ router.get('/:id', (req, res) => {
         } else {
             res.status(404).send('Table not found');
         }
+    })
+});
+
+router.delete('/', (req, res) => {
+    table.deleteTables().then(() => {
+        res.status(200).send('Success');
     })
 });
 
