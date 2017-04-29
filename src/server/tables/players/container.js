@@ -10,6 +10,7 @@ module.exports = {
     createNewPlayer: (tableId, playerId) => {
         const baseUrl = 'tables/' + tableId + '/players/';
         return firebase.database().ref(baseUrl + playerId).set({
+            name: 'Anonymous',
             score: 0
         });
     },
