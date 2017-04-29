@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var table = require('./container');
+var players = require('./players/routes');
 
 router.get('/', (req, res) => {
     table.getTables()
@@ -17,9 +18,9 @@ router.post('/', (req, res) => {
         })
 });
 
-router.get('/:id', (req, res) => {
-    var id = req.params.id;
-    table.getTable(id).then((data) => {
+router.get('/:tableId', (req, res) => {
+    var tableId = req.params.tableId;
+    table.getTable(tableId).then((data) => {
         if (data !== null) {
             res.status(200).json(data.val());
         } else {
@@ -34,15 +35,14 @@ router.delete('/', (req, res) => {
     })
 });
 
-router.delete('/:id', (req, res) => {
-    var id = req.params.id;
-    table.deleteTable(id).then(() => {
-        if (data !== null) {
-            res.status(200).send('success');
-        } else {
-            res.status(404).send('Table not found');
-        }
+router.delete('/:tableId', (req, res) => {
+    var tableId = req.params.tableId;
+    table.deleteTable(tableId).then(() => {
+        res.status(200).send('Success');
     })
 });
+
+router.use('/:tableId/players', players);
+
 
 module.exports = router
