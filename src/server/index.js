@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var tables = require('./tables/routes');
+var cards = require('./cards/routes');
 
 var app = express();
 
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;
 
+app.use('/api/cards', cards);
 app.use('/api/tables', tables);
 
 // START THE SERVER
