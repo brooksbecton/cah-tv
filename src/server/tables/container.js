@@ -1,14 +1,19 @@
 var hri = require('human-readable-ids').hri;
 var firebase = require('./../firebase');
 
+const cards = require('./../cards/container');
+
+
 function _generateId() {
     return hri.random();
 }
 
 module.exports = {
-    createNewTable: function (id = _generateId()) {
+    createNewTable: function (id = _generateId(), decks) {
+        const deck = cards.initCardIds(decks);
         return firebase.database().ref('tables/' + id).set({
-            active: false
+            active: false,
+            deck: deck,
         });
     },
     deleteTables: function () {

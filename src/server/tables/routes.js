@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    table.createNewTable()
+    const decks = JSON.parse(req.body.decks);
+    table.createNewTable(undefined, decks)
         .then(() => {
             res.status(200).send('Success');
         })
