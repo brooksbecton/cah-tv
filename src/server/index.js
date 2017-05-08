@@ -1,19 +1,28 @@
-var express = require('express');
-var bodyParser = require('body-parser');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
-var tables = require('./tables/routes');
-var cards = require('./cards/routes');
 
-var app = express();
+const tables = require('./tables/routes');
+const cards = require('./cards/routes');
+
+const app = express();
 
 // this will let us get the data from a POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;
+app.use(express.static(__dirname + '/../../dist'));
+
+
+const port = process.env.PORT || 8080;
 
 app.use('/api/cards', cards);
 app.use('/api/tables', tables);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../../dist/', 'index.html'))
+});
 
 // START THE SERVER
 app.listen(port);
