@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 import App from './../App/App';
-import CreateTable from './../CreateTable/CreateTable';
+import CreateTable from './../Table/CreateTable/CreateTableContainer';
 
 const Root = ({ store }) => (
 
