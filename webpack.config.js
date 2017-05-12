@@ -8,6 +8,13 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        historyApiFallback: true,
+        port: 8080,
+        stats: 'errors-only'
+    },
     entry: './src',
     output: {
         path: path.resolve('dist'),
@@ -26,5 +33,6 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     plugins: [HtmlWebpackPluginConfig]
+
 
 }

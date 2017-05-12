@@ -22,13 +22,13 @@
     "devDependencies": {
         "babel-jest": "^19.0.0",
         "jest": "^19.0.2",
-        "react-scripts": "0.9.5",
-        "webpack": "^2.5.0"
+        "webpack": "^2.5.0",
+        "webpack-dev-server": "^2.4.5"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "start-server": "node src/server/index.js",
-        "build": "react-scripts build",
+        "dev": "webpack-dev-server --watch",
+        "start": "node src/server/index.js",
+        "build": "webpack",
         "test": "jest",
         "test:watch": "yarn test -- --watch",
         "eject": "react-scripts eject"
