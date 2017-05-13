@@ -11,8 +11,16 @@ router.get('/', (req, res) => {
         })
 });
 
+/**
+ * Expects "decks" in body to be sent as array
+ * e.g. - decks: ["Base", "CAHe1"]
+ */
 router.post('/', (req, res) => {
-    const decks = JSON.parse(req.body.decks);
+    const defaultDecks = ["Base"];
+    const decks = defaultDecks;
+    if (req.body.decks !== undefined) {
+        const decks = JSON.parse(req.body.decks);
+    }
     table.createNewTable(undefined, decks)
         .then(() => {
             res.status(200).send('Success');
