@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+var webpack = require('webpack');
+var webpackConfig = require('./../../webpack.config');
+var compiler = webpack(webpackConfig);
 
 const tables = require('./tables/routes');
 const cards = require('./cards/routes');
@@ -14,6 +16,10 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../../dist'));
 
+app.use(require("webpack-dev-middleware")(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath
+}));
+app.use(require("webpack-hot-middleware")(compiler));
 
 const port = process.env.PORT || 8080;
 

@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -8,14 +9,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
-    devServer: {
-        contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        historyApiFallback: true,
-        port: 8080,
-        stats: 'errors-only'
-    },
-    entry: './src',
+    entry: ['./src/', 'webpack/hot/dev-server', 'webpack-hot-middleware/client'],
     output: {
         path: path.resolve('dist'),
         filename: 'index_bundle.js'
@@ -32,7 +26,10 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx']
     },
-    plugins: [HtmlWebpackPluginConfig]
+    plugins: [
+        HtmlWebpackPluginConfig,
+        new webpack.HotModuleReplacementPlugin(),
+    ]
 
 
 }
