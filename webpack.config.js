@@ -11,8 +11,9 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
     entry: ['./src/', 'webpack/hot/dev-server', 'webpack-hot-middleware/client'],
     output: {
+        filename: 'index_bundle.js',
         path: path.resolve('dist'),
-        filename: 'index_bundle.js'
+        publicPath: 'http://localhost:8080/dist/',
     },
     module: {
         loaders: [

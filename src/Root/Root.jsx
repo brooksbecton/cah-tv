@@ -21,3 +21,5 @@ const Root = ({ store }) => (
 )
 
 export default Root;
+
+module.hot.accept();
